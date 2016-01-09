@@ -36,13 +36,13 @@ libs/util.class.php : ユーティリティのライブラリ(未使用)
 
 imports : 外部(サードパーティ)からインポートしたライブラリ用フォルダ
 
-imports/cache : cache lite (PEAR CacheLite) *1
+imports/cache : cache lite (PEAR CacheLite) ＊1
 
 ime.nu.php : リンククッション
 
-Smarty : html出力するフレームワーク用フォルダ(Smarty) *2
+Smarty : html出力するフレームワーク用フォルダ(Smarty) ＊2
 
-plugins : Smartyのプラグイン用フォルダ *3
+plugins : Smartyのプラグイン用フォルダ ＊3
 
 templates : 各画面のパターン(テンプレート)用フォルダ
 
@@ -54,9 +54,9 @@ index.php : メインのプログラム
 
 ## 必要なライブラリ
 ### Cache_Lite 
-https://pear.php.net/package/Cache_Lite/ より取得後,*1のフォルダに保存
+https://pear.php.net/package/Cache_Lite/ より取得後,＊1のフォルダに保存
 ### Smarty
-http://www.smarty.net/ より取得後,本体は*2のフォルダに,プラグインは*3のフォルダに保存
+http://www.smarty.net/ より取得後,本体は＊2のフォルダに,プラグインは＊3のフォルダに保存
 ## 変更が必要なファイル
 config.cgi : /path/to/ を設置ディレクトリに適合させる
 
