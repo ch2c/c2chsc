@@ -1,0 +1,28 @@
+{nocache}
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+	<meta charset="shift_jis">
+	<title>{$TITLE}</title>
+</head>
+<body>
+	<p>{$MESSG}</p>
+<a name=u></a>
+<a href=#b accesskey=8>下</a>
+{$BBSNAME} <a href="http://{$BBSURL}/head.txt">規</a><hr>
+	{foreach from=$body item=value02 name=loop01}
+	{$value02.no}:<a href="/test/-/{$value02.folder}/{$value02.url}">{$value02.name}</a><br>
+	{foreachelse}
+	エラー(2)<br>リロードすると表示できるかも
+	{/foreach}
+<hr>
+<a name=b></a>
+<a href=#u accesskey=2>上</a>
+<a href={$GOBACK} accesskey=7>前</a>
+<a href={$NEXTU} accesskey=9>次</a>
+<a href=w accesskey=4>立</a>
+<a href="http://c.2ch.sc">TOP</a>
+</body>
+</html>
+<body>
+{/nocache}

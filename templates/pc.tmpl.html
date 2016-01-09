@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+	<meta charset="shift_jis">
+	<title>{$TITLE}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <link media="only screen and (max-device-width:480px)" href="smart.css" type="text/css" rel="stylesheet" />-->
+	<link media="screen and (min-device-width:481px)" href="{$site}/css/bootstrap.css" type="text/css" rel="stylesheet" />
+	<link media="screen and (min-device-width:481px)" href="{$site}/css/dashboard.css" type="text/css" rel="stylesheet" />
+	<!--[if IE]>
+		<link href="{$site}/css/bootstrap.css" type="text/css" rel="stylesheet" />
+		<link href="{$site}/css/dashboard.css" type="text/css" rel="stylesheet" />
+	<![endif]-->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<script src="{$site}/assets/js/ie8-responsive-file-warning.js"></script>
+	<![endif]-->
+	<script src="{$site}/js/ie-emulation-modes-warning.js"></script>
+</head>
+<body>
+	<!-- header nav menu -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">c.2ch.sc</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Dashboard</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- End of header nav -->
+	<!-- Left side nav -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="http://c.2ch.sc">TOP <span class="sr-only">(current)</span></a></li>
+{foreach from=$menu item=value01 name=loop01}
+					<li><a href="{$site}/pc/{$value01.url|escape}">{$value01.name}</a></li>
+{foreachelse}
+					no data <code::01>.
+{/foreach}
+{foreach from=$plusmenu item=value02 name=loop02}
+					<li><a href="{$value02.url|escape}">{$value02.name}</a></li>
+{foreachelse}
+				no data <code::02>.
+{/foreach}
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+{if $type eq 'category'}
+				<h1 class="page-header">カテゴリ別表示</h1>
+{foreach from=$cate item=value10 name=loop10}
+				<a href="{$site}/pc/test/-/{$value10.url}">{$value10.name}</a><br>
+				<hr>
+{foreachelse}
+				no data <code::10>.
+{/foreach}
+{elseif $type eq 'boad'}
+				<h1 class="page-header">スレッド一覧表示</h1>
+{foreach from=$subject item=value11 name=loop11}
+				{$value11.no}:<a href="{$site}/test/-/{$value11.folder}/{$value11.url}">{$value11.name}</a>
+				<br>
+				<hr>
+{foreachelse}
+				no data <code::10>.
+{/foreach}
+				<a href={$sgoback} accesskey=7>前</a>
+				<a href={$snext} accesskey=9>次</a>
+{elseif $type eq 'thread'}
+				<h1 class="page-header">スレッド表示</h1>
+{foreach from=$body item=value06 name=loop03}
+				{$value03.no}:{$value03.name} {$value03.day} [<a href="mailto:{$value03.mail}">{$value02.mail}</a>] <br>
+				{$value03.hon}
+				<hr>
+{foreachelse}
+				no data <code::2>.
+{/foreach}
+{else}
+					<h1 class="page-header">Well Come To c.2ch.sc</h1>
+{/if}
+{if $type eq 'thread'}
+				<h2 class="sub-header" data-target="write-form-01">書き込む</h2>
+				<dd id="write-form-01">
+					<form method=post action=http://{$SVNAME}/test/bbs.cgi?guid=ON utn>
+						名前<input name=FROM size=14><br>
+						メールアドレス<input name=mail size=14><br>
+						本文<textarea name=MESSAGE></textarea><br>
+						<a href=http://info.2ch.sc/kiyaku.html>規約</a>に同意する
+						<input type=hidden name=bbs value={$BBSNAME}>
+						<input type=hidden name=key value={$THREDKEY}>
+						<input type=hidden name=time value={$TIME}>
+						<input type=hidden name=get value=1>
+						<input type=submit name=submit value=かきこむ>
+					</form>
+				</dd>
+{else}
+{/if}
+			</div>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="{$site}/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="{$site}/js/ie10-viewport-bug-workaround.js"></script>
+	<!-- Write form -->
+	<script src="{$site}/js/write-form.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,20 @@
+{nocache}
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+	<meta charset="shift_jis">
+	<title>{$TITLE}</title>
+</head>
+<body>
+	<p>{$MESSG}</p>
+	{foreach from=$body item=value01 name=loop01}
+	<a href="/test/-/{$value01.url}">{$value01.name}</a><br>
+	{foreachelse}
+	エラー(3)<br>リロードすると表示できるかも
+	{/foreach}
+<hr>
+<a href="http://c.2ch.sc">TOP</a>
+</body>
+</html>
+<body>
+{/nocache}

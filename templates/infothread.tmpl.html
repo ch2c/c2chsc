@@ -1,0 +1,29 @@
+{nocache}
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+	<meta charset="shift_jis">
+	<title>{$TITLE}</title>
+</head>
+<body>
+	<p>{$MESSG}</p>
+	<a href=#b accesskey=8>下</a>{$BBS}
+	<hr>
+	{foreach from=$body item=value02 name=loop01}
+	{$value02.no}:{$value02.name} {$value02.day} [<a href="mailto:{$value02.mail}">{$value02.mail}</a>] <br>
+	{$value02.hon}
+	<hr>
+	{foreachelse}
+	エラー(1)<br>リロードすると表示可能できるかも。
+	{/foreach}
+<a name=b></a>
+<a href=#u accesskey=2>上</a>
+<a href=./-{$GOBACK} accesskey=7>前</a>
+<a href=./{$NEXTU}- accesskey=9>次</a>
+<a href=./{$FIRST} accesskey=1>1-</a>
+<a href={$ITA} accesskey=6>板</a>
+<a href="http://c.2ch.sc">TOP</a>
+</body>
+</html>
+<body>
+{/nocache}

@@ -1,0 +1,27 @@
+{nocache}
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+	<meta charset="shift_jis">
+	<title>{$TITLE}</title>
+</head>
+<body>
+	<p>{$MESSG}</p>
+	{$BBS}に書き込む<hr>
+	<form method=post action=http://{$SVNAME}/test/bbs.cgi?guid=ON utn>
+	名<input name=FROM size=14><br>
+	メ<input name=mail size=14><br>
+	本文<textarea name=MESSAGE></textarea><br>
+	<a href=http://info.2ch.sc/kiyaku.html>規約</a>に同意する
+	<input type=hidden name=bbs value={$BBSNAME}>
+	<input type=hidden name=key value={$THREDKEY}>
+	<input type=hidden name=time value={$TIME}>
+	<input type=hidden name=get value=1>
+	<input type=submit name=submit value=かきこむ>
+	</form>
+<hr>
+<a name=b></a>
+</body>
+</html>
+<body>
+{/nocache}
